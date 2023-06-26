@@ -8,21 +8,21 @@ public class Cliente {
     private String apellido;
     private String nombre;
     private String domicilio;
-    private long telefono;
+    private String telefono;
     
     
     // Constructor vacio para cuando quiera llenar datos seteando.
     public Cliente(){
     }
     // Constructor parametrizado sin id para cuando insertar a la bd.(Ya que el id es autoincremental)
-    public Cliente(String apellido, String nombre, String domicilio, long telefono){
+    public Cliente(String apellido, String nombre, String domicilio, String telefono){
         this.apellido = apellido;
         this.nombre = nombre;
         this.domicilio = domicilio;
         this.telefono = telefono;
     }
     // Constructor parametrizado con id para cuando quiera probar desde el main
-    public Cliente(int idCliente, String apellido, String nombre, String domicilio, long telefono){
+    public Cliente(int idCliente, String apellido, String nombre, String domicilio, String telefono){
         this.idCliente = idCliente;
         this.apellido = apellido;
         this.nombre = nombre;
@@ -58,10 +58,10 @@ public class Cliente {
         this.domicilio = domicilio;
     }
     
-    public long getTelefono() {
+    public String getTelefono() {
         return telefono;
     }
-    public void setTelefono(long telefono) {
+    public void setTelefono(String telefono) {
         this.telefono = telefono;
     }
     

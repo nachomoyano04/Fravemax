@@ -7,21 +7,21 @@ public class DetalleCompra {
     private int idDetalleCompra;
     private int cantidad;
     private int precioCosto;
-    private Proveedor idProveedor;
+    private Compra idCompra;
     private Producto idProducto;
 
     public DetalleCompra(){}
-    public DetalleCompra(int cantidad, int precioCosto, Proveedor idProveedor, Producto idProducto){
+    public DetalleCompra(int cantidad, int precioCosto, Compra idCompra, Producto idProducto){
         this.cantidad = cantidad;
         this.precioCosto = precioCosto;
-        this.idProveedor = idProveedor;
+        this.idCompra = idCompra;
         this.idProducto = idProducto;
     }
-    public DetalleCompra(int idDetalleCompra, int cantidad, int precioCosto, Proveedor idProveedor, Producto idProducto){
+    public DetalleCompra(int idDetalleCompra, int cantidad, int precioCosto, Compra idCompra, Producto idProducto){
         this.idDetalleCompra = idDetalleCompra;
         this.cantidad = cantidad;
         this.precioCosto = precioCosto;
-        this.idProveedor = idProveedor;
+        this.idCompra = idCompra;
         this.idProducto = idProducto;
     }
 
@@ -49,12 +49,12 @@ public class DetalleCompra {
         this.precioCosto = precioCosto;
     }
 
-    public Proveedor getIdProveedor() {
-        return idProveedor;
+    public Compra getIdCompra() {
+        return idCompra;
     }
 
-    public void setIdProveedor(Proveedor idProveedor) {
-        this.idProveedor = idProveedor;
+    public void setIdCompra(Compra idCompra) {
+        this.idCompra = idCompra;
     }
 
     public Producto getIdProducto() {
@@ -67,7 +67,7 @@ public class DetalleCompra {
 
     @Override
     public String toString() {
-        return cantidad+", "+precioCosto+", "+idProveedor.getRazonSocial()+", "+idProducto.getDescripcion();
+        return cantidad+", "+precioCosto+", "+idCompra.getIdProveedor().getRazonSocial()+", "+idProducto.getDescripcion();
     }
     
     
