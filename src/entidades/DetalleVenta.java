@@ -7,22 +7,22 @@ public class DetalleVenta {
     private int idDetalleVenta;
     private int cantidad;
     private int precioVenta;
-    private Cliente idCliente;
-    private Producto idProducto;
+    private Venta venta;
+    private Producto producto;
 
     public DetalleVenta(){}
-    public DetalleVenta(int cantidad, int precioVenta, Cliente idCliente, Producto idProducto){
+    public DetalleVenta(int cantidad, int precioVenta, Venta venta, Producto producto){
         this.cantidad = cantidad;
         this.precioVenta = precioVenta;
-        this.idCliente = idCliente; 
-        this.idProducto = idProducto;
+        this.venta = venta; 
+        this.producto = producto;
     }
-    public DetalleVenta(int idDetalleVenta, int cantidad, int precioVenta, Cliente idCliente, Producto idProducto){
+    public DetalleVenta(int idDetalleVenta, int cantidad, int precioVenta, Venta venta, Producto producto){
         this.idDetalleVenta = idDetalleVenta;
         this.cantidad = cantidad;
         this.precioVenta = precioVenta;
-        this.idCliente = idCliente; 
-        this.idProducto = idProducto;
+        this.venta = venta; 
+        this.producto = producto;
     }
 
     public int getIdDetalleVenta() {
@@ -49,24 +49,24 @@ public class DetalleVenta {
         this.precioVenta = precioVenta;
     }
 
-    public Cliente getIdCliente() {
-        return idCliente;
+    public Venta getVenta() {
+        return venta;
     }
 
-    public void setIdCliente(Cliente idCliente) {
-        this.idCliente = idCliente;
+    public void setVenta(Venta venta) {
+        this.venta = venta;
     }
 
-    public Producto getIdProducto() {
-        return idProducto;
+    public Producto getProducto() {
+        return producto;
     }
 
-    public void setIdProducto(Producto idProducto) {
-        this.idProducto = idProducto;
+    public void setProducto(Producto producto) {
+        this.producto = producto;
     }
     
     @Override
     public String toString(){
-        return cantidad+", "+precioVenta+", "+idCliente.getNombre()+", "+idProducto.getDescripcion();
+        return cantidad+", "+precioVenta+", "+venta.getCliente().getNombre()+", "+producto.getDescripcion();
     }
 }

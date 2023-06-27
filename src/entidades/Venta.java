@@ -7,17 +7,17 @@ import java.time.LocalDate;
  */
 public class Venta {
     private int idVenta;
-    private Cliente idCliente;
+    private Cliente cliente;
     private LocalDate fecha;
     
     public Venta(){}
-    public Venta(Cliente idCliente, LocalDate fecha){
-        this.idCliente = idCliente;
+    public Venta(Cliente cliente, LocalDate fecha){
+        this.cliente = cliente;
         this.fecha = fecha;
     }
-    public Venta(int idVenta, Cliente idCliente, LocalDate fecha){
+    public Venta(int idVenta, Cliente cliente, LocalDate fecha){
         this.idVenta = idVenta;
-        this.idCliente = idCliente;
+        this.cliente = cliente;
         this.fecha = fecha;
     }
 
@@ -29,12 +29,12 @@ public class Venta {
         this.idVenta = idVenta;
     }
 
-    public Cliente getIdCliente() {
-        return idCliente;
+    public Cliente getCliente() {
+        return cliente;
     }
 
-    public void setIdCliente(Cliente idCliente) {
-        this.idCliente = idCliente;
+    public void setCliente(Cliente cliente) {
+        this.cliente = cliente;
     }
 
     public LocalDate getFecha() {
@@ -47,6 +47,6 @@ public class Venta {
         
     @Override
     public String toString(){
-        return idCliente.getNombre()+" "+fecha;
+        return cliente.getNombre()+" "+fecha;
     }
 }

@@ -8,20 +8,20 @@ import java.time.LocalDate;
 public class Compra {
     private int idCompra;
     private LocalDate fecha;
-    private Proveedor idProveedor;
+    private Proveedor proveedor;
 
     public Compra() {
     }
 
-    public Compra(LocalDate fecha, Proveedor idProveedor) {
+    public Compra(LocalDate fecha, Proveedor proveedor) {
         this.fecha = fecha;
-        this.idProveedor = idProveedor;
+        this.proveedor = proveedor;
     }
 
-    public Compra(int idCompra, LocalDate fecha, Proveedor idProveedor) {
+    public Compra(int idCompra, LocalDate fecha, Proveedor proveedor) {
         this.idCompra = idCompra;
         this.fecha = fecha;
-        this.idProveedor = idProveedor;
+        this.proveedor = proveedor;
     }
 
     public int getIdCompra() {
@@ -40,17 +40,17 @@ public class Compra {
         this.fecha = fecha;
     }
 
-    public Proveedor getIdProveedor() {
-        return idProveedor;
+    public Proveedor getProveedor() {
+        return proveedor;
     }
 
-    public void setIdProveedor(Proveedor idProveedor) {
-        this.idProveedor = idProveedor;
+    public void setProveedor(Proveedor proveedor) {
+        this.proveedor = proveedor;
     }
 
     @Override
     public String toString() {
-        return fecha + ", " + idProveedor.getRazonSocial();
+        return fecha + ", " + proveedor.getRazonSocial();
     }
     
     

@@ -7,22 +7,22 @@ public class DetalleCompra {
     private int idDetalleCompra;
     private int cantidad;
     private int precioCosto;
-    private Compra idCompra;
-    private Producto idProducto;
+    private Compra compra;
+    private Producto producto;
 
     public DetalleCompra(){}
-    public DetalleCompra(int cantidad, int precioCosto, Compra idCompra, Producto idProducto){
+    public DetalleCompra(int cantidad, int precioCosto, Compra compra, Producto producto){
         this.cantidad = cantidad;
         this.precioCosto = precioCosto;
-        this.idCompra = idCompra;
-        this.idProducto = idProducto;
+        this.compra = compra;
+        this.producto = producto;
     }
-    public DetalleCompra(int idDetalleCompra, int cantidad, int precioCosto, Compra idCompra, Producto idProducto){
+    public DetalleCompra(int idDetalleCompra, int cantidad, int precioCosto, Compra compra, Producto producto){
         this.idDetalleCompra = idDetalleCompra;
         this.cantidad = cantidad;
         this.precioCosto = precioCosto;
-        this.idCompra = idCompra;
-        this.idProducto = idProducto;
+        this.compra = compra;
+        this.producto = producto;
     }
 
     public int getIdDetalleCompra() {
@@ -49,25 +49,25 @@ public class DetalleCompra {
         this.precioCosto = precioCosto;
     }
 
-    public Compra getIdCompra() {
-        return idCompra;
+    public Compra getCompra() {
+        return compra;
     }
 
-    public void setIdCompra(Compra idCompra) {
-        this.idCompra = idCompra;
+    public void setCompra(Compra compra) {
+        this.compra = compra;
     }
 
-    public Producto getIdProducto() {
-        return idProducto;
+    public Producto getProducto() {
+        return producto;
     }
 
-    public void setIdProducto(Producto idProducto) {
-        this.idProducto = idProducto;
+    public void setProducto(Producto producto) {
+        this.producto = producto;
     }
 
     @Override
     public String toString() {
-        return cantidad+", "+precioCosto+", "+idCompra.getIdProveedor().getRazonSocial()+", "+idProducto.getDescripcion();
+        return cantidad+", "+precioCosto+", "+compra.getProveedor().getRazonSocial()+", "+producto.getDescripcion();
     }
     
     

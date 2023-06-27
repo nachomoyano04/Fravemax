@@ -71,7 +71,7 @@ public class ProductoData {
         }
     }
     
-    public Producto buscarProductoPorId(int idProducto){
+    public Producto buscarProductoXId(int idProducto){
         Producto producto = new Producto();
         String sql = "SELECT * FROM producto WHERE idProducto = ?";
         PreparedStatement ps;

@@ -29,8 +29,8 @@ public class DetalleCompraData {
            ps = con.prepareStatement(sql);
            ps.setInt(1, detalleCompra.getCantidad());
            ps.setInt(2, detalleCompra.getPrecioCosto());
-           ps.setInt(3, detalleCompra.getIdCompra().getIdCompra());
-           ps.setInt(4, detalleCompra.getIdProducto().getIdProducto());
+           ps.setInt(3, detalleCompra.getCompra().getIdCompra());
+           ps.setInt(4, detalleCompra.getProducto().getIdProducto());
            int exito = ps.executeUpdate();
            if(exito == 1){
                JOptionPane.showMessageDialog(null, "Detalle de compra hecho con éxito");
@@ -48,8 +48,8 @@ public class DetalleCompraData {
            ps = con.prepareStatement(sql);
            ps.setInt(1, detalleCompra.getCantidad());
            ps.setInt(2, detalleCompra.getPrecioCosto());
-           ps.setInt(3, detalleCompra.getIdCompra().getIdCompra());
-           ps.setInt(4, detalleCompra.getIdProducto().getIdProducto());
+           ps.setInt(3, detalleCompra.getCompra().getIdCompra());
+           ps.setInt(4, detalleCompra.getProducto().getIdProducto());
            int exito = ps.executeUpdate();
            if(exito == 1){
                JOptionPane.showMessageDialog(null, "Detalle de compra modificado con éxito");
