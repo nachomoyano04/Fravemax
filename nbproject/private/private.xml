@@ -3,14 +3,10 @@
     <editor-bookmarks xmlns="http://www.netbeans.org/ns/editor-bookmarks/2" lastBookmarkId="0"/>
     <open-files xmlns="http://www.netbeans.org/ns/projectui-open-files/2">
         <group>
-            <file>file:/C:/Users/nacho/OneDrive/Documentos/NetBeansProjects/Fravemax/src/controladoras/Conexion.java</file>
-            <file>file:/C:/Users/nacho/OneDrive/Documentos/NetBeansProjects/Fravemax/src/controladoras/DetalleVentaData.java</file>
-            <file>file:/C:/Users/nacho/OneDrive/Documentos/NetBeansProjects/Fravemax/src/controladoras/ProveedorData.java</file>
-            <file>file:/C:/Users/nacho/OneDrive/Documentos/NetBeansProjects/Fravemax/src/controladoras/DetalleCompraData.java</file>
-            <file>file:/C:/Users/nacho/OneDrive/Documentos/NetBeansProjects/Fravemax/src/controladoras/VentaData.java</file>
-            <file>file:/C:/Users/nacho/OneDrive/Documentos/NetBeansProjects/Fravemax/src/controladoras/ProductoData.java</file>
-            <file>file:/C:/Users/nacho/OneDrive/Documentos/NetBeansProjects/Fravemax/src/controladoras/CompraData.java</file>
-            <file>file:/C:/Users/nacho/OneDrive/Documentos/NetBeansProjects/Fravemax/src/controladoras/ClienteData.java</file>
+            <file>file:/C:/Users/nacho/OneDrive/Documentos/NetBeansProjects/Fravemax/src/vistas/ProveedoresVista.java</file>
+            <file>file:/C:/Users/nacho/OneDrive/Documentos/NetBeansProjects/Fravemax/src/vistas/MenuPrincipal.java</file>
+            <file>file:/C:/Users/nacho/OneDrive/Documentos/NetBeansProjects/Fravemax/src/vistas/ClienteVista.java</file>
+            <file>file:/C:/Users/nacho/OneDrive/Documentos/NetBeansProjects/Fravemax/src/vistas/Inventario.java</file>
         </group>
     </open-files>
 </project-private>

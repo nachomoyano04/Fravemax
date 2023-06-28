@@ -6,6 +6,7 @@ import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.sql.Statement;
+import java.util.ArrayList;
 import javax.swing.JOptionPane;
 
 public class ClienteData {
@@ -74,5 +75,28 @@ public class ClienteData {
             JOptionPane.showMessageDialog(null, "Error al buscar cliente..."+ex.getMessage());
         }
         return cliente;
+    }
+    
+    public ArrayList<Cliente> listarClientes(){
+        ArrayList<Cliente>clientes = new ArrayList();
+        String sql = "SELECT * FROM cliente";
+        PreparedStatement ps;
+        try{
+            ps = con.prepareStatement(sql, Statement.RETURN_GENERATED_KEYS);
+            ResultSet res = ps.executeQuery();
+            while(res.next()){
+                Cliente cliente = new Cliente();
+                cliente.setIdCliente(res.getInt("idCliente"));
+                cliente.setApellido(res.getString("apellido"));
+                cliente.setNombre(res.getString("nombre"));
+                cliente.setDomicilio(res.getString("domicilio"));
+                cliente.setTelefono(res.getString("telefono"));
+                clientes.add(cliente);
+            }
+            ps.close();
+        }catch(SQLException ex){
+            JOptionPane.showMessageDialog(null, "Error al listar clientes..."+ex.getMessage());
+        }
+        return clientes;
     }
 }

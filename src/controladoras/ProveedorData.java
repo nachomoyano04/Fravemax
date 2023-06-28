@@ -6,6 +6,7 @@ import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.sql.Statement;
+import java.util.ArrayList;
 import javax.swing.JOptionPane;
 
 /**
@@ -75,5 +76,27 @@ public class ProveedorData {
             JOptionPane.showMessageDialog(null, "Error al buscar proveedor..."+ex.getMessage());
         }
         return proveedor;
+    }
+    
+    public ArrayList<Proveedor> listarProveedores(){
+        ArrayList<Proveedor>proveedores = new ArrayList();
+        String sql = "SELECT * FROM proveedor";
+        PreparedStatement ps;
+        try{
+            ps = con.prepareStatement(sql, Statement.RETURN_GENERATED_KEYS);
+            ResultSet res = ps.executeQuery();
+            while(res.next()){
+                Proveedor pro = new Proveedor();
+                pro.setIdProveedor(res.getInt("idProveedor"));
+                pro.setRazonSocial(res.getString("razonSocial"));
+                pro.setDomicilio(res.getString("domicilio"));
+                pro.setTelefono(res.getString("telefono"));
+                proveedores.add(pro);
+            }
+            ps.close();
+        }catch(SQLException ex){
+            JOptionPane.showMessageDialog(null, "Error al listar proveedores..."+ex.getMessage());
+        }
+        return proveedores;
     }
 }

@@ -6,6 +6,7 @@ import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.sql.Statement;
+import java.util.ArrayList;
 import javax.swing.JOptionPane;
 
 /**
@@ -17,15 +18,15 @@ public class ProductoData {
         con = Conexion.getConexion();
     }
     
-    public void nuevoProducto(String descripcion, int precioActual, int stock, int estado){
+    public void nuevoProducto(Producto producto){
         String sql = "INSERT INTO producto (descripcion, precioActual, stock, estado) VALUES (?,?,?,?)";
         PreparedStatement ps;
         try{
             ps = con.prepareStatement(sql);
-            ps.setString(1, descripcion);
-            ps.setInt(2, precioActual);
-            ps.setInt(3, stock);
-            ps.setInt(4, estado);
+            ps.setString(1, producto.getDescripcion());
+            ps.setInt(2, producto.getPrecioActual());
+            ps.setInt(3, producto.getStock());
+            ps.setInt(4, producto.getEstado());
             int exito = ps.executeUpdate();
             if(exito == 1){
                 JOptionPane.showMessageDialog(null, "Producto añadido al inventario");
@@ -45,6 +46,7 @@ public class ProductoData {
             ps.setInt(2, producto.getPrecioActual());
             ps.setInt(3, producto.getStock());
             ps.setInt(4, producto.getEstado());
+            ps.setInt(5, producto.getIdProducto());
             int estado = ps.executeUpdate();
             if(estado == 1){
                 JOptionPane.showMessageDialog(null, "Producto modificado con éxito");
@@ -88,9 +90,31 @@ public class ProductoData {
             }
             ps.close();
         }catch(SQLException ex){
-            JOptionPane.showMessageDialog(null, "Error al buscar producto"+ex.getMessage());
+            JOptionPane.showMessageDialog(null, "Error al buscar producto..."+ex.getMessage());
         }
         return producto;
+    }
+    
+    public ArrayList<Producto> listarProductos(){
+        ArrayList<Producto>productos = new ArrayList();
+        String sql = "SELECT * FROM producto";
+        PreparedStatement ps;
+        try{
+            ps = con.prepareStatement(sql, Statement.RETURN_GENERATED_KEYS);
+            ResultSet res = ps.executeQuery();
+            while(res.next()){
+                Producto producto = new Producto();
+                producto.setIdProducto(res.getInt("idProducto"));
+                producto.setDescripcion(res.getString("descripcion"));
+                producto.setPrecioActual(res.getInt("precioActual"));
+                producto.setStock(res.getInt("stock"));
+                producto.setEstado(res.getInt("estado"));
+                productos.add(producto);
+            }
+        }catch(SQLException ex){
+            JOptionPane.showMessageDialog(null, "Error al listar productos..."+ex.getMessage());
+        }
+        return productos;
     }
     
     
