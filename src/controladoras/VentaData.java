@@ -21,23 +21,30 @@ public class VentaData {
         con = Conexion.getConexion();
     }
     
-    public void nuevaVenta(Venta venta){
+    public int nuevaVenta(Venta venta) {
         String sql = "INSERT INTO venta (fecha, idCliente) VALUES (?,?)";
         PreparedStatement ps;
-        try{
-            ps = con.prepareStatement(sql);
+        ResultSet res;
+        int idVentaGenerado = -1; // Valor por defecto en caso de error
+        try {
+            ps = con.prepareStatement(sql, Statement.RETURN_GENERATED_KEYS);
             ps.setDate(1, Date.valueOf(venta.getFecha()));
             ps.setInt(2, venta.getCliente().getIdCliente());
             int exito = ps.executeUpdate();
-            if(exito == 1){
+            if (exito == 1) {
+                res = ps.getGeneratedKeys();
+                if (res.next()) {
+                    idVentaGenerado = res.getInt(1);
+                }
                 JOptionPane.showMessageDialog(null, "Venta realizada con éxito.");
             }
             ps.close();
-        }catch(SQLException ex){
-            JOptionPane.showMessageDialog(null, "Error al añadir nueva venta..."+ex.getMessage());
+        } catch (SQLException ex) {
+            JOptionPane.showMessageDialog(null, "Error al añadir nueva venta..." + ex.getMessage());
         }
+        return idVentaGenerado;
     }
-    
+
     public void modificarVenta(Venta venta){
         String sql = "UPDATE venta SET fecha = ?, idCliente = ? WHERE idVenta = ?";
         PreparedStatement ps;

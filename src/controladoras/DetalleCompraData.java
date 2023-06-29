@@ -28,7 +28,7 @@ public class DetalleCompraData {
        try{
            ps = con.prepareStatement(sql);
            ps.setInt(1, detalleCompra.getCantidad());
-           ps.setInt(2, detalleCompra.getPrecioCosto());
+           ps.setBigDecimal(2, detalleCompra.getPrecioCosto());
            ps.setInt(3, detalleCompra.getCompra().getIdCompra());
            ps.setInt(4, detalleCompra.getProducto().getIdProducto());
            int exito = ps.executeUpdate();
@@ -47,7 +47,7 @@ public class DetalleCompraData {
        try{
            ps = con.prepareStatement(sql);
            ps.setInt(1, detalleCompra.getCantidad());
-           ps.setInt(2, detalleCompra.getPrecioCosto());
+           ps.setBigDecimal(2, detalleCompra.getPrecioCosto());
            ps.setInt(3, detalleCompra.getCompra().getIdCompra());
            ps.setInt(4, detalleCompra.getProducto().getIdProducto());
            int exito = ps.executeUpdate();

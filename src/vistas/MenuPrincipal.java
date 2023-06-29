@@ -11,6 +11,7 @@ import java.awt.Image;
 import java.awt.Toolkit;
 import javax.swing.ImageIcon;
 import javax.swing.JLabel;
+import javax.swing.JOptionPane;
 import javax.swing.border.LineBorder;
 
 /**
@@ -52,6 +53,11 @@ public class MenuPrincipal extends javax.swing.JFrame {
 
         btnVentas.setFont(new java.awt.Font("Dialog", 1, 18)); // NOI18N
         btnVentas.setText("VENTAS");
+        btnVentas.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnVentasActionPerformed(evt);
+            }
+        });
 
         btnClientes.setFont(new java.awt.Font("Dialog", 1, 18)); // NOI18N
         btnClientes.setText("CLIENTES");
@@ -89,7 +95,7 @@ public class MenuPrincipal extends javax.swing.JFrame {
             .addGroup(jPanel1Layout.createSequentialGroup()
                 .addGap(511, 511, 511)
                 .addComponent(jLabel1)
-                .addContainerGap(460, Short.MAX_VALUE))
+                .addContainerGap(457, Short.MAX_VALUE))
         );
         jPanel1Layout.setVerticalGroup(
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -126,7 +132,7 @@ public class MenuPrincipal extends javax.swing.JFrame {
                             .addComponent(btnClientes, javax.swing.GroupLayout.PREFERRED_SIZE, 170, javax.swing.GroupLayout.PREFERRED_SIZE)
                             .addComponent(btnVentas, javax.swing.GroupLayout.PREFERRED_SIZE, 170, javax.swing.GroupLayout.PREFERRED_SIZE)
                             .addComponent(btnCompras, javax.swing.GroupLayout.PREFERRED_SIZE, 170, javax.swing.GroupLayout.PREFERRED_SIZE))
-                        .addGap(0, 1083, Short.MAX_VALUE)))
+                        .addGap(0, 1080, Short.MAX_VALUE)))
                 .addContainerGap())
         );
         EscritorioLayout.setVerticalGroup(
@@ -134,15 +140,15 @@ public class MenuPrincipal extends javax.swing.JFrame {
             .addGroup(EscritorioLayout.createSequentialGroup()
                 .addContainerGap()
                 .addComponent(jPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 45, Short.MAX_VALUE)
+                .addGap(18, 18, 18)
                 .addComponent(btnVentas, javax.swing.GroupLayout.PREFERRED_SIZE, 83, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(18, 18, 18)
+                .addGap(26, 26, 26)
                 .addComponent(btnCompras, javax.swing.GroupLayout.PREFERRED_SIZE, 82, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(18, 18, 18)
+                .addGap(26, 26, 26)
                 .addComponent(btnClientes, javax.swing.GroupLayout.PREFERRED_SIZE, 80, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(18, 18, 18)
+                .addGap(26, 26, 26)
                 .addComponent(btnProveedores, javax.swing.GroupLayout.PREFERRED_SIZE, 80, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(18, 18, 18)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 26, Short.MAX_VALUE)
                 .addComponent(btnInventario, javax.swing.GroupLayout.PREFERRED_SIZE, 80, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(19, 19, 19))
         );
@@ -162,7 +168,7 @@ public class MenuPrincipal extends javax.swing.JFrame {
     }// </editor-fold>//GEN-END:initComponents
 
     private void btnClientesActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnClientesActionPerformed
-        ClienteVista cv = new ClienteVista();
+        ClientesVista cv = new ClientesVista();
         cv.setVisible(true);
         Escritorio.add(cv);
         cv.moveToFront();
@@ -170,7 +176,7 @@ public class MenuPrincipal extends javax.swing.JFrame {
     }//GEN-LAST:event_btnClientesActionPerformed
 
     private void btnInventarioActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnInventarioActionPerformed
-        Inventario iv = new Inventario();
+        InventarioVista iv = new InventarioVista();
         iv.setVisible(true);
         Escritorio.add(iv);
         iv.moveToFront();
@@ -184,6 +190,24 @@ public class MenuPrincipal extends javax.swing.JFrame {
         pv.moveToFront();
         pv.setBounds(250, 140, 1000, 500);
     }//GEN-LAST:event_btnProveedoresActionPerformed
+
+    private void btnVentasActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnVentasActionPerformed
+        String opciones[] = {"NUEVA VENTA", "HISTORIAL DE VENTAS"};
+        int elegida = JOptionPane.showOptionDialog(this, "Opciones:", "Menú", 0, 0, null, opciones, null);
+        if(elegida == 0){
+            VentasVista vv = new VentasVista();
+            vv.setVisible(true);
+            Escritorio.add(vv);
+            vv.moveToFront();
+            vv.setBounds(250, 140, 1000, 500);            
+        }else{
+            HistorialVentasVista hvv = new HistorialVentasVista();
+            hvv.setVisible(true);
+            Escritorio.add(hvv);
+            hvv.moveToFront();
+            hvv.setBounds(250, 140, 1000, 500);
+        }
+    }//GEN-LAST:event_btnVentasActionPerformed
 
     /**
      * @param args the command line arguments

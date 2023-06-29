@@ -7,6 +7,7 @@ package vistas;
 
 import controladoras.ProductoData;
 import entidades.Producto;
+import java.math.BigDecimal;
 import java.util.ArrayList;
 import javax.swing.ButtonGroup;
 import javax.swing.JOptionPane;
@@ -16,13 +17,13 @@ import javax.swing.table.DefaultTableModel;
  *
  * @author nacho
  */
-public class Inventario extends javax.swing.JInternalFrame {
+public class InventarioVista extends javax.swing.JInternalFrame {
     private DefaultTableModel table;
     private ProductoData pd = new ProductoData();
     private ButtonGroup bg = new ButtonGroup();
     private String estado = "nuevo";
 
-    public Inventario() {
+    public InventarioVista() {
         initComponents();
         llenarTablaProductos();
         labelSeleccioneFila.setVisible(false);
@@ -204,8 +205,7 @@ public class Inventario extends javax.swing.JInternalFrame {
                                 .addComponent(rbInactivo))))
                     .addGroup(layout.createSequentialGroup()
                         .addGap(63, 63, 63)
-                        .addComponent(labelTitle)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)))
+                        .addComponent(labelTitle)))
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(layout.createSequentialGroup()
                         .addGap(413, 413, 413)
@@ -274,7 +274,7 @@ public class Inventario extends javax.swing.JInternalFrame {
         if(verificarCampos()){
             Producto pr = new Producto();
             pr.setDescripcion(tfDescripcion.getText());
-            pr.setPrecioActual(Integer.parseInt(tfPrecio.getText()));
+            pr.setPrecioActual(BigDecimal.valueOf(Double.parseDouble(tfPrecio.getText())));
             pr.setStock(Integer.parseInt(tfStock.getText()));
             if(rbActivo.isSelected()){
                 pr.setEstado(1);

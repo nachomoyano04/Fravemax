@@ -99,4 +99,28 @@ public class ClienteData {
         }
         return clientes;
     }
+    
+    public ArrayList<Cliente> filtrarClientesPorApellido(String letters){
+        ArrayList<Cliente>clientes = new ArrayList();
+        String sql = "SELECT * FROM cliente WHERE apellido LIKE ?";
+        PreparedStatement ps;
+        try{
+            ps = con.prepareStatement(sql, Statement.RETURN_GENERATED_KEYS);
+            ps.setString(1, "%"+letters+"%");
+            ResultSet res = ps.executeQuery();
+            while(res.next()){
+                Cliente cliente = new Cliente();
+                cliente.setIdCliente(res.getInt("idCliente"));
+                cliente.setApellido(res.getString("apellido"));
+                cliente.setNombre(res.getString("nombre"));
+                cliente.setDomicilio(res.getString("domicilio"));
+                cliente.setTelefono(res.getString("telefono"));
+                clientes.add(cliente);
+            }
+            ps.close();
+        }catch(SQLException ex){
+            JOptionPane.showMessageDialog(null, "Error al filtrar clientes por apellido");
+        }
+        return clientes;
+    }
 }

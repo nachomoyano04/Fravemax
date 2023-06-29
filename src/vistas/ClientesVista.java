@@ -15,7 +15,7 @@ import javax.swing.table.DefaultTableModel;
  *
  * @author nacho
  */
-public class ClienteVista extends javax.swing.JInternalFrame {
+public class ClientesVista extends javax.swing.JInternalFrame {
     
     private DefaultTableModel table;
     private ClienteData cd = new ClienteData();
@@ -23,7 +23,7 @@ public class ClienteVista extends javax.swing.JInternalFrame {
     /**
      * Creates new form ClienteVista
      */
-    public ClienteVista() {
+    public ClientesVista() {
         initComponents();
         llenarTablaClientes();
         labelSeleccioneFila.setVisible(false);
@@ -240,7 +240,7 @@ public class ClienteVista extends javax.swing.JInternalFrame {
                             .addComponent(btnLimpiar)))
                     .addGroup(layout.createSequentialGroup()
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addComponent(btnModificarCliente)
                             .addComponent(btnSalir))))
                 .addContainerGap(54, Short.MAX_VALUE))

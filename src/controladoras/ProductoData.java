@@ -24,7 +24,7 @@ public class ProductoData {
         try{
             ps = con.prepareStatement(sql);
             ps.setString(1, producto.getDescripcion());
-            ps.setInt(2, producto.getPrecioActual());
+            ps.setBigDecimal(2, producto.getPrecioActual());
             ps.setInt(3, producto.getStock());
             ps.setInt(4, producto.getEstado());
             int exito = ps.executeUpdate();
@@ -43,7 +43,7 @@ public class ProductoData {
         try{
             ps = con.prepareStatement(sql);
             ps.setString(1, producto.getDescripcion());
-            ps.setInt(2, producto.getPrecioActual());
+            ps.setBigDecimal(2, producto.getPrecioActual());
             ps.setInt(3, producto.getStock());
             ps.setInt(4, producto.getEstado());
             ps.setInt(5, producto.getIdProducto());
@@ -84,7 +84,7 @@ public class ProductoData {
             if(res.next()){
                 producto.setIdProducto(res.getInt("idProducto"));
                 producto.setDescripcion(res.getString("descripcion"));
-                producto.setPrecioActual(res.getInt("precioActual"));
+                producto.setPrecioActual(res.getBigDecimal("precioActual"));
                 producto.setStock(res.getInt("stock"));
                 producto.setEstado(res.getInt("estado"));
             }
@@ -106,13 +106,38 @@ public class ProductoData {
                 Producto producto = new Producto();
                 producto.setIdProducto(res.getInt("idProducto"));
                 producto.setDescripcion(res.getString("descripcion"));
-                producto.setPrecioActual(res.getInt("precioActual"));
+                producto.setPrecioActual(res.getBigDecimal("precioActual"));
                 producto.setStock(res.getInt("stock"));
                 producto.setEstado(res.getInt("estado"));
                 productos.add(producto);
             }
+            ps.close();
         }catch(SQLException ex){
             JOptionPane.showMessageDialog(null, "Error al listar productos..."+ex.getMessage());
+        }
+        return productos;
+    }
+
+    public ArrayList<Producto> filtrarProductosPorDescripcion(String descripcion) {
+        ArrayList<Producto>productos = new ArrayList();
+        String sql = "SELECT * FROM producto WHERE descripcion LIKE ?";
+        PreparedStatement ps;
+        try{
+            ps = con.prepareStatement(sql, Statement.RETURN_GENERATED_KEYS);
+            ps.setString(1, "%"+descripcion+"%");
+            ResultSet res = ps.executeQuery();
+            while(res.next()){
+                Producto producto = new Producto();
+                producto.setIdProducto(res.getInt("idProducto"));
+                producto.setDescripcion(res.getString("descripcion"));
+                producto.setPrecioActual(res.getBigDecimal("precioActual"));
+                producto.setStock(res.getInt("stock"));
+                producto.setEstado(res.getInt("estado"));
+                productos.add(producto);
+            }
+            ps.close();
+        }catch(SQLException ex){
+            JOptionPane.showMessageDialog(null, "Error al filtrar productos por descripción.");
         }
         return productos;
     }

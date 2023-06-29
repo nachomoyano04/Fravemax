@@ -1,23 +1,25 @@
 package entidades;
 
+import java.math.BigDecimal;
+
 /**
  * @author nacho
  */
 public class Producto {
     private int idProducto;
     private String descripcion;
-    private int precioActual;
+    private BigDecimal precioActual;
     private int stock;
     private int estado;
     
     public Producto(){}
-    public Producto(String descripcion, int precioActual, int stock, int estado){
+    public Producto(String descripcion, BigDecimal precioActual, int stock, int estado){
         this.descripcion = descripcion;
         this.precioActual = precioActual;
         this.stock = stock;
         this.estado = estado;
     }
-    public Producto(int idProducto, String descripcion, int precioActual, int stock, int estado){
+    public Producto(int idProducto, String descripcion, BigDecimal precioActual, int stock, int estado){
         this.idProducto = idProducto;
         this.descripcion = descripcion;
         this.precioActual = precioActual;
@@ -41,11 +43,11 @@ public class Producto {
         this.descripcion = descripcion;
     }
 
-    public int getPrecioActual() {
+    public BigDecimal getPrecioActual() {
         return precioActual;
     }
 
-    public void setPrecioActual(int precioActual) {
+    public void setPrecioActual(BigDecimal precioActual) {
         this.precioActual = precioActual;
     }
 
