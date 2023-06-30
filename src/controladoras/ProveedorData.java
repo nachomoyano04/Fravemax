@@ -99,4 +99,27 @@ public class ProveedorData {
         }
         return proveedores;
     }
+
+    public ArrayList<Proveedor> filtrarPorRazonSocial(String razonSocial) {
+        ArrayList<Proveedor>proveedores = new ArrayList();
+        String sql = "SELECT * FROM proveedor WHERE razonSocial LIKE ?";
+        PreparedStatement ps;
+        try{
+            ps = con.prepareStatement(sql, Statement.RETURN_GENERATED_KEYS);
+            ps.setString(1, "%"+razonSocial+"%");
+            ResultSet res = ps.executeQuery();
+            while(res.next()){
+                Proveedor proveedor = new Proveedor();
+                proveedor.setIdProveedor(res.getInt("idProveedor"));
+                proveedor.setRazonSocial(res.getString("razonSocial"));
+                proveedor.setDomicilio(res.getString("domicilio"));
+                proveedor.setTelefono(res.getString("telefono"));
+                proveedores.add(proveedor);
+            }
+            ps.close();
+        }catch(SQLException ex){
+            JOptionPane.showMessageDialog(null, "Error al filtrar proveedor por razón social");
+        }
+        return proveedores;
+    }
 }

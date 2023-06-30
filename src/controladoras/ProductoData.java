@@ -141,6 +141,31 @@ public class ProductoData {
         }
         return productos;
     }
+
+    public ArrayList<Producto> filtrarPorStock(int desde, int hasta) {
+        ArrayList<Producto>productos = new ArrayList();
+        String sql = "SELECT * FROM producto WHERE stock >= ? AND stock <= ?";
+        PreparedStatement ps;
+        try{
+            ps = con.prepareStatement(sql, Statement.RETURN_GENERATED_KEYS);
+            ps.setInt(1, desde);
+            ps.setInt(2, hasta);
+            ResultSet res = ps.executeQuery();
+            while(res.next()){
+                Producto producto = new Producto();
+                producto.setIdProducto(res.getInt("idProducto"));
+                producto.setDescripcion(res.getString("descripcion"));
+                producto.setPrecioActual(res.getBigDecimal("precioActual"));
+                producto.setStock(res.getInt("stock"));
+                producto.setEstado(res.getInt("estado"));
+                productos.add(producto);                
+            }
+            ps.close();
+        }catch(SQLException ex){
+            JOptionPane.showMessageDialog(null, "Error al filtrar por stock");
+        }
+        return productos;
+    }
     
     
 }

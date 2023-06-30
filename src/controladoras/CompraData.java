@@ -23,21 +23,28 @@ public class CompraData {
         con = Conexion.getConexion();
     }
     
-    public void nuevaCompra(Compra compra){
+    public int nuevaCompra(Compra compra){
         String sql = "INSERT INTO compra (fecha, idProveedor) VALUES (?,?)";
         PreparedStatement ps;
+        ResultSet res;
+        int idCompra = 0;
         try{
-            ps = con.prepareStatement(sql);
+            ps = con.prepareStatement(sql, Statement.RETURN_GENERATED_KEYS);
             ps.setDate(1, Date.valueOf(compra.getFecha()));
             ps.setInt(2, compra.getProveedor().getIdProveedor());
             int exito = ps.executeUpdate();
             if(exito == 1){
+                res = ps.getGeneratedKeys();
+                if(res.next()){
+                    idCompra = res.getInt(1);
+                }
                 JOptionPane.showMessageDialog(null, "Compra creada con éxito");
             }
             ps.close();
         }catch(SQLException ex){
             JOptionPane.showMessageDialog(null,"Error al registrar nueva compra..."+ex.getMessage());
         }
+        return idCompra;
     }
     
     public void modificarCompra(Compra compra){

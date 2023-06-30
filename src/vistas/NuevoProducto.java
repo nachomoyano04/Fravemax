@@ -11,19 +11,20 @@ import java.math.BigDecimal;
 import java.util.ArrayList;
 import javax.swing.ButtonGroup;
 import javax.swing.JOptionPane;
+import javax.swing.ListSelectionModel;
 import javax.swing.table.DefaultTableModel;
 
 /**
  *
  * @author nacho
  */
-public class InventarioVista extends javax.swing.JInternalFrame {
+public class NuevoProducto extends javax.swing.JInternalFrame {
     private DefaultTableModel table;
     private ProductoData pd = new ProductoData();
     private ButtonGroup bg = new ButtonGroup();
     private String estado = "nuevo";
 
-    public InventarioVista() {
+    public NuevoProducto() {
         initComponents();
         llenarTablaProductos();
         labelSeleccioneFila.setVisible(false);
@@ -61,7 +62,11 @@ public class InventarioVista extends javax.swing.JInternalFrame {
         rbInactivo = new javax.swing.JRadioButton();
         labelSeleccioneFila = new javax.swing.JLabel();
 
+        jPanel1.setBackground(new java.awt.Color(255, 255, 0));
+        jPanel1.setForeground(new java.awt.Color(0, 0, 0));
+
         jLabel1.setFont(new java.awt.Font("Dialog", 1, 18)); // NOI18N
+        jLabel1.setForeground(new java.awt.Color(0, 0, 0));
         jLabel1.setText("Productos del inventario");
 
         javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
@@ -117,6 +122,7 @@ public class InventarioVista extends javax.swing.JInternalFrame {
                 tableProductosMouseClicked(evt);
             }
         });
+        tableProductos.setSelectionMode(ListSelectionModel.SINGLE_SELECTION);
         jScrollPane1.setViewportView(tableProductos);
         if (tableProductos.getColumnModel().getColumnCount() > 0) {
             tableProductos.getColumnModel().getColumn(0).setMinWidth(70);
@@ -399,6 +405,9 @@ public class InventarioVista extends javax.swing.JInternalFrame {
         labelTitle.setText("Nuevo Producto");
         labelSeleccioneFila.setVisible(false);
         estado = "nuevo";
+        tfDescripcion.setEditable(true);
+        tfPrecio.setEditable(true);
+        tfStock.setEditable(true);
     }
 
     private boolean verificarCampos() {

@@ -72,7 +72,10 @@ public class HistorialVentasVista extends javax.swing.JInternalFrame {
             tableVentas.getColumnModel().getColumn(4).setMaxWidth(90);
         }
 
+        jPanel1.setBackground(new java.awt.Color(255, 255, 0));
+
         jLabel1.setFont(new java.awt.Font("Dialog", 1, 24)); // NOI18N
+        jLabel1.setForeground(new java.awt.Color(0, 0, 0));
         jLabel1.setText("Historial de Ventas");
 
         javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);

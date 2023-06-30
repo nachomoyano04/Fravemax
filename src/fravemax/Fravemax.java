@@ -7,7 +7,7 @@ package fravemax;
 public class Fravemax {
 
     public static void main(String[] args) {
-    
+        
     }
     
 }

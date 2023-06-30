@@ -9,6 +9,7 @@ import controladoras.ClienteData;
 import entidades.Cliente;
 import java.util.ArrayList;
 import javax.swing.JOptionPane;
+import javax.swing.ListSelectionModel;
 import javax.swing.table.DefaultTableModel;
 
 /**
@@ -57,7 +58,10 @@ public class ClientesVista extends javax.swing.JInternalFrame {
         labelCliente = new javax.swing.JLabel();
         btnSalir = new javax.swing.JButton();
 
+        jPanel1.setBackground(new java.awt.Color(255, 255, 0));
+
         jLabel1.setFont(new java.awt.Font("Dialog", 1, 24)); // NOI18N
+        jLabel1.setForeground(new java.awt.Color(0, 0, 0));
         jLabel1.setText("Cliente");
 
         javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
@@ -127,6 +131,7 @@ public class ClientesVista extends javax.swing.JInternalFrame {
                 tableClientesMouseClicked(evt);
             }
         });
+        tableClientes.setSelectionMode(ListSelectionModel.SINGLE_SELECTION);
         jScrollPane1.setViewportView(tableClientes);
         if (tableClientes.getColumnModel().getColumnCount() > 0) {
             tableClientes.getColumnModel().getColumn(0).setMinWidth(80);
@@ -141,7 +146,7 @@ public class ClientesVista extends javax.swing.JInternalFrame {
         });
 
         labelSeleccioneFila.setForeground(new java.awt.Color(255, 0, 0));
-        labelSeleccioneFila.setText("Seleccione la fila del cliente a modificar");
+        labelSeleccioneFila.setText("Doble click en fila del cliente a modificar");
 
         labelCliente.setFont(new java.awt.Font("Times New Roman", 1, 14)); // NOI18N
         labelCliente.setText("NUEVO CLIENTE");
@@ -355,6 +360,8 @@ public class ClientesVista extends javax.swing.JInternalFrame {
         tfDomicilio.setText("");
         tfTelefono.setText("");
         tableClientes.clearSelection();
+        btnModificarCliente.setEnabled(true);
+        estado = "nuevo";        
     }
 
     private boolean verificarCampos() {
