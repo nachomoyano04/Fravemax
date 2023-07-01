@@ -58,7 +58,7 @@ public class MenuPrincipal extends javax.swing.JFrame {
         });
 
         btnInventario.setFont(new java.awt.Font("Dialog", 1, 18)); // NOI18N
-        btnInventario.setText("INVENTARIO");
+        btnInventario.setText("PRODUCTOS");
         btnInventario.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 btnInventario(evt);
@@ -164,19 +164,22 @@ public class MenuPrincipal extends javax.swing.JFrame {
 
     private void btnInventario(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnInventario
         String opciones[] = {"Nuevo Producto", "Ver Inventario"};
-        int elegida = JOptionPane.showOptionDialog(this, "Opciones: ", "Elija una opcion", 0, 1, null, opciones, null);
-        if(elegida == 0){
-            NuevoProducto iv = new NuevoProducto();
-            iv.setVisible(true);
-            Escritorio.add(iv);
-            iv.moveToFront();
-            iv.setBounds(250, 140, 1000, 500);
-        }else{
-            ConsultarInventario ci = new ConsultarInventario();
-            ci.setVisible(true);
-            Escritorio.add(ci);
-            ci.moveToFront();
-            ci.setBounds(250, 140, 1000, 500);
+        int elegida = JOptionPane.showOptionDialog(this, null, "Elija una opción:", 0, JOptionPane.DEFAULT_OPTION, null, opciones, null);
+        switch(elegida){
+            case 0:
+                NuevoProducto iv = new NuevoProducto();
+                iv.setVisible(true);
+                Escritorio.add(iv);
+                iv.moveToFront();
+                iv.setBounds(250, 140, 1000, 500);                
+                break;
+            case 1:
+                ConsultarInventario ci = new ConsultarInventario();
+                ci.setVisible(true);
+                Escritorio.add(ci);
+                ci.moveToFront();
+                ci.setBounds(250, 140, 1000, 500); 
+                break;
         }
     }//GEN-LAST:event_btnInventario
 
@@ -190,37 +193,43 @@ public class MenuPrincipal extends javax.swing.JFrame {
 
     private void btnVentas(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnVentas
         String opciones[] = {"NUEVA VENTA", "HISTORIAL DE VENTAS"};
-        int elegida = JOptionPane.showOptionDialog(this, "Opciones:", "Menú", 0, 1, null, opciones, null);
-        if(elegida == 0){
-            VentasVista vv = new VentasVista();
-            vv.setVisible(true);
-            Escritorio.add(vv);
-            vv.moveToFront();
-            vv.setBounds(250, 140, 1000, 500);            
-        }else{
-            HistorialVentasVista hvv = new HistorialVentasVista();
-            hvv.setVisible(true);
-            Escritorio.add(hvv);
-            hvv.moveToFront();
-            hvv.setBounds(250, 140, 1000, 500);
+        int elegida = JOptionPane.showOptionDialog(this, null, "Elija una opción;", 0, JOptionPane.DEFAULT_OPTION, null, opciones, null);
+        switch(elegida){
+            case 0:
+                VentasVista vv = new VentasVista();
+                vv.setVisible(true);
+                Escritorio.add(vv);
+                vv.moveToFront();
+                vv.setBounds(250, 140, 1000, 500);                 
+                break;
+            case 1:
+                HistorialVentasVista hvv = new HistorialVentasVista();
+                hvv.setVisible(true);
+                Escritorio.add(hvv);
+                hvv.moveToFront();
+                hvv.setBounds(250, 140, 1000, 500);                
+                break;
         }
     }//GEN-LAST:event_btnVentas
 
     private void btnCompras(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnCompras
         String opciones[] = {"NUEVA COMPRA", "HISTORIAL DE COMPRAS"};
-        int elegida = JOptionPane.showOptionDialog(this, "Opciones", "Menú", 0, 1, null, opciones, null);
-        if(elegida == 0){
-            ComprasVista cv = new ComprasVista();
-            cv.setVisible(true);
-            Escritorio.add(cv);
-            cv.moveToFront();
-            cv.setBounds(250, 140, 1000, 500);
-        }else{
-            HistorialComprasVista hcv = new HistorialComprasVista();
-            hcv.setVisible(true);
-            Escritorio.add(hcv);
-            hcv.moveToFront();
-            hcv.setBounds(250, 140, 1000, 500);
+        int elegida = JOptionPane.showOptionDialog(this, null, "Elija una opción", 0, JOptionPane.DEFAULT_OPTION, null, opciones, null);
+        switch(elegida){
+            case 0:
+                ComprasVista cv = new ComprasVista();
+                cv.setVisible(true);
+                Escritorio.add(cv);
+                cv.moveToFront();
+                cv.setBounds(250, 140, 1000, 500);
+                break;
+            case 1:
+                HistorialComprasVista hcv = new HistorialComprasVista();
+                hcv.setVisible(true);
+                Escritorio.add(hcv);
+                hcv.moveToFront();
+                hcv.setBounds(250, 140, 1000, 500);
+                break;
         }
     }//GEN-LAST:event_btnCompras
 

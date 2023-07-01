@@ -76,7 +76,7 @@ public class ConsultarInventario extends javax.swing.JInternalFrame {
 
             },
             new String [] {
-                "Num", "Descripcion", "Precio Actual", "Stock", "Estado"
+                "N°", "Descripción", "Precio Actual", "Stock", "Estado"
             }
         ) {
             Class[] types = new Class [] {
@@ -97,8 +97,8 @@ public class ConsultarInventario extends javax.swing.JInternalFrame {
         tableInventario.setSelectionMode(ListSelectionModel.SINGLE_SELECTION);
         jScrollPane1.setViewportView(tableInventario);
         if (tableInventario.getColumnModel().getColumnCount() > 0) {
-            tableInventario.getColumnModel().getColumn(0).setMinWidth(50);
-            tableInventario.getColumnModel().getColumn(0).setMaxWidth(50);
+            tableInventario.getColumnModel().getColumn(0).setMinWidth(40);
+            tableInventario.getColumnModel().getColumn(0).setMaxWidth(40);
             tableInventario.getColumnModel().getColumn(2).setMinWidth(100);
             tableInventario.getColumnModel().getColumn(2).setMaxWidth(100);
             tableInventario.getColumnModel().getColumn(3).setMinWidth(90);
@@ -107,6 +107,7 @@ public class ConsultarInventario extends javax.swing.JInternalFrame {
             tableInventario.getColumnModel().getColumn(4).setMaxWidth(100);
         }
 
+        btnSalir.setBackground(new java.awt.Color(255, 102, 102));
         btnSalir.setText("SALIR");
         btnSalir.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -115,6 +116,7 @@ public class ConsultarInventario extends javax.swing.JInternalFrame {
         });
 
         jLabel2.setFont(new java.awt.Font("Dialog", 1, 18)); // NOI18N
+        jLabel2.setForeground(new java.awt.Color(255, 255, 0));
         jLabel2.setText("Filtros");
 
         jLabel3.setText("Por Descripcion:");

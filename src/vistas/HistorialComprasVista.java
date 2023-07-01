@@ -41,13 +41,14 @@ public class HistorialComprasVista extends javax.swing.JInternalFrame {
         tfFiltrarPorProductos = new javax.swing.JTextField();
         jLabel3 = new javax.swing.JLabel();
         tfFiltrarPorProveedores = new javax.swing.JTextField();
+        btnSalir = new javax.swing.JButton();
 
         tableCompras.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
 
             },
             new String [] {
-                "num", "producto", "cantidad", "precio costo", "fecha", "proveedor"
+                "N°", "Producto", "Cantidad", "Precio Costo", "Fecha", "Proveedor"
             }
         ) {
             Class[] types = new Class [] {
@@ -68,8 +69,8 @@ public class HistorialComprasVista extends javax.swing.JInternalFrame {
         jScrollPane1.setViewportView(tableCompras);
         tableCompras.setSelectionMode(ListSelectionModel.SINGLE_SELECTION);
         if (tableCompras.getColumnModel().getColumnCount() > 0) {
-            tableCompras.getColumnModel().getColumn(0).setMinWidth(50);
-            tableCompras.getColumnModel().getColumn(0).setMaxWidth(50);
+            tableCompras.getColumnModel().getColumn(0).setMinWidth(40);
+            tableCompras.getColumnModel().getColumn(0).setMaxWidth(40);
             tableCompras.getColumnModel().getColumn(2).setMinWidth(60);
             tableCompras.getColumnModel().getColumn(2).setMaxWidth(60);
             tableCompras.getColumnModel().getColumn(3).setMinWidth(90);
@@ -117,6 +118,14 @@ public class HistorialComprasVista extends javax.swing.JInternalFrame {
             }
         });
 
+        btnSalir.setBackground(new java.awt.Color(255, 102, 102));
+        btnSalir.setText("SALIR");
+        btnSalir.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnSalirActionPerformed(evt);
+            }
+        });
+
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
@@ -136,7 +145,10 @@ public class HistorialComprasVista extends javax.swing.JInternalFrame {
                         .addGap(51, 51, 51)
                         .addComponent(jLabel3)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(tfFiltrarPorProveedores, javax.swing.GroupLayout.DEFAULT_SIZE, 153, Short.MAX_VALUE)))
+                        .addComponent(tfFiltrarPorProveedores, javax.swing.GroupLayout.DEFAULT_SIZE, 153, Short.MAX_VALUE))
+                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
+                        .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                        .addComponent(btnSalir, javax.swing.GroupLayout.PREFERRED_SIZE, 104, javax.swing.GroupLayout.PREFERRED_SIZE)))
                 .addContainerGap())
         );
         layout.setVerticalGroup(
@@ -153,7 +165,9 @@ public class HistorialComprasVista extends javax.swing.JInternalFrame {
                             .addComponent(tfFiltrarPorProveedores, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))))
                 .addGap(18, 18, Short.MAX_VALUE)
                 .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 364, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(54, 54, 54))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addComponent(btnSalir)
+                .addGap(10, 10, 10))
         );
 
         pack();
@@ -169,8 +183,13 @@ public class HistorialComprasVista extends javax.swing.JInternalFrame {
         llenarTablaCompras(dcd.filtrarComprasPorProveedores(razonSocial));
     }//GEN-LAST:event_tfFiltrarPorProveedoresKeyReleased
 
+    private void btnSalirActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnSalirActionPerformed
+        dispose();
+    }//GEN-LAST:event_btnSalirActionPerformed
+
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JButton btnSalir;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;

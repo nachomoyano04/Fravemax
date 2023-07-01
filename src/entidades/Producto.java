@@ -69,7 +69,6 @@ public class Producto {
 
     @Override
     public String toString() {
-        return descripcion+", stock: "+stock;
+        return descripcion;
     }
-    
 }

@@ -37,6 +37,10 @@
                       <EmptySpace max="-2" attributes="0"/>
                       <Component id="tfFiltrarPorProveedores" pref="153" max="32767" attributes="0"/>
                   </Group>
+                  <Group type="102" alignment="1" attributes="0">
+                      <EmptySpace max="32767" attributes="0"/>
+                      <Component id="btnSalir" min="-2" pref="104" max="-2" attributes="0"/>
+                  </Group>
               </Group>
               <EmptySpace max="-2" attributes="0"/>
           </Group>
@@ -59,7 +63,9 @@
               </Group>
               <EmptySpace type="separate" max="32767" attributes="0"/>
               <Component id="jScrollPane1" min="-2" pref="364" max="-2" attributes="0"/>
-              <EmptySpace min="-2" pref="54" max="-2" attributes="0"/>
+              <EmptySpace type="unrelated" max="-2" attributes="0"/>
+              <Component id="btnSalir" min="-2" max="-2" attributes="0"/>
+              <EmptySpace min="-2" pref="10" max="-2" attributes="0"/>
           </Group>
       </Group>
     </DimensionLayout>
@@ -76,17 +82,17 @@
           <Properties>
             <Property name="model" type="javax.swing.table.TableModel" editor="org.netbeans.modules.form.editors2.TableModelEditor">
               <Table columnCount="6" rowCount="0">
-                <Column editable="false" title="num" type="java.lang.Integer"/>
-                <Column editable="false" title="producto" type="java.lang.String"/>
-                <Column editable="false" title="cantidad" type="java.lang.Integer"/>
-                <Column editable="false" title="precio costo" type="java.lang.Integer"/>
-                <Column editable="false" title="fecha" type="java.lang.String"/>
-                <Column editable="false" title="proveedor" type="java.lang.String"/>
+                <Column editable="false" title="N&#xb0;" type="java.lang.Integer"/>
+                <Column editable="false" title="Producto" type="java.lang.String"/>
+                <Column editable="false" title="Cantidad" type="java.lang.Integer"/>
+                <Column editable="false" title="Precio Costo" type="java.lang.Integer"/>
+                <Column editable="false" title="Fecha" type="java.lang.String"/>
+                <Column editable="false" title="Proveedor" type="java.lang.String"/>
               </Table>
             </Property>
             <Property name="columnModel" type="javax.swing.table.TableColumnModel" editor="org.netbeans.modules.form.editors2.TableColumnModelEditor" preCode="tableCompras.setSelectionMode(ListSelectionModel.SINGLE_SELECTION);">
               <TableColumnModel selectionModel="0">
-                <Column maxWidth="50" minWidth="50" prefWidth="-1" resizable="true">
+                <Column maxWidth="40" minWidth="40" prefWidth="-1" resizable="true">
                   <Title/>
                   <Editor/>
                   <Renderer/>
@@ -184,6 +190,17 @@
     <Component class="javax.swing.JTextField" name="tfFiltrarPorProveedores">
       <Events>
         <EventHandler event="keyReleased" listener="java.awt.event.KeyListener" parameters="java.awt.event.KeyEvent" handler="tfFiltrarPorProveedoresKeyReleased"/>
+      </Events>
+    </Component>
+    <Component class="javax.swing.JButton" name="btnSalir">
+      <Properties>
+        <Property name="background" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
+          <Color blue="66" green="66" red="ff" type="rgb"/>
+        </Property>
+        <Property name="text" type="java.lang.String" value="SALIR"/>
+      </Properties>
+      <Events>
+        <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="btnSalirActionPerformed"/>
       </Events>
     </Component>
   </SubComponents>
