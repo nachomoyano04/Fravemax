@@ -174,11 +174,13 @@ public class HistorialComprasVista extends javax.swing.JInternalFrame {
     }// </editor-fold>//GEN-END:initComponents
 
     private void tfFiltrarPorProductosKeyReleased(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_tfFiltrarPorProductosKeyReleased
+        tfFiltrarPorProveedores.setText("");
         String descripcion = tfFiltrarPorProductos.getText();
         llenarTablaCompras(dcd.filtrarComprasPorProducto(descripcion));
     }//GEN-LAST:event_tfFiltrarPorProductosKeyReleased
 
     private void tfFiltrarPorProveedoresKeyReleased(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_tfFiltrarPorProveedoresKeyReleased
+        tfFiltrarPorProductos.setText("");
         String razonSocial = tfFiltrarPorProveedores.getText();
         llenarTablaCompras(dcd.filtrarComprasPorProveedores(razonSocial));
     }//GEN-LAST:event_tfFiltrarPorProveedoresKeyReleased

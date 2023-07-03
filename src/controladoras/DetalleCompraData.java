@@ -34,10 +34,7 @@ public class DetalleCompraData {
            ps.setBigDecimal(2, detalleCompra.getPrecioCosto());
            ps.setInt(3, detalleCompra.getCompra().getIdCompra());
            ps.setInt(4, detalleCompra.getProducto().getIdProducto());
-           int exito = ps.executeUpdate();
-           if(exito == 1){
-               JOptionPane.showMessageDialog(null, "Detalle de compra hecho con éxito");
-           }
+           ps.executeUpdate();
            ps.close();
        }catch(SQLException ex){
            JOptionPane.showMessageDialog(null, "Error al hacer una nueva compra..."+ex.getMessage());

@@ -14,9 +14,11 @@ import entidades.DetalleCompra;
 import entidades.Producto;
 import entidades.Proveedor;
 import java.math.BigDecimal;
+import java.math.RoundingMode;
 import java.time.LocalDate;
 import java.util.ArrayList;
 import javax.swing.JFormattedTextField;
+import javax.swing.JOptionPane;
 import javax.swing.JSpinner;
 import javax.swing.ListSelectionModel;
 import javax.swing.SpinnerNumberModel;
@@ -40,6 +42,7 @@ public class ComprasVista extends javax.swing.JInternalFrame {
         initComponents();
         llenarTablaProveedores(provs.listarProveedores());
         llenarTablaProductos(produs.listarProductos());
+        tfFecha.setText(LocalDate.now()+"");
     }
 
     @SuppressWarnings("unchecked")
@@ -87,7 +90,7 @@ public class ComprasVista extends javax.swing.JInternalFrame {
             .addGroup(jPanel1Layout.createSequentialGroup()
                 .addGap(19, 19, 19)
                 .addComponent(jLabel1)
-                .addContainerGap(24, Short.MAX_VALUE))
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
         jPanel1Layout.setVerticalGroup(
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -170,8 +173,8 @@ public class ComprasVista extends javax.swing.JInternalFrame {
         if (tableProductos.getColumnModel().getColumnCount() > 0) {
             tableProductos.getColumnModel().getColumn(0).setMinWidth(40);
             tableProductos.getColumnModel().getColumn(0).setMaxWidth(40);
-            tableProductos.getColumnModel().getColumn(2).setMinWidth(80);
-            tableProductos.getColumnModel().getColumn(2).setMaxWidth(80);
+            tableProductos.getColumnModel().getColumn(2).setMinWidth(95);
+            tableProductos.getColumnModel().getColumn(2).setMaxWidth(95);
             tableProductos.getColumnModel().getColumn(3).setMinWidth(60);
             tableProductos.getColumnModel().getColumn(3).setMaxWidth(60);
             tableProductos.getColumnModel().getColumn(4).setMinWidth(90);
@@ -210,6 +213,7 @@ public class ComprasVista extends javax.swing.JInternalFrame {
         spinnerCantidad.setModel(snm);
         JFormattedTextField tf = ((JSpinner.DefaultEditor) spinnerCantidad.getEditor()).getTextField();
         tf.setEditable(false);
+        spinnerCantidad.setEnabled(false);
 
         tfFecha.setEditable(false);
 
@@ -268,47 +272,54 @@ public class ComprasVista extends javax.swing.JInternalFrame {
                     .addGroup(layout.createSequentialGroup()
                         .addGap(18, 18, 18)
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addGroup(layout.createSequentialGroup()
-                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                    .addComponent(jLabel4)
-                                    .addComponent(jLabel5)
-                                    .addComponent(jLabel6)
-                                    .addComponent(jLabel8)
-                                    .addComponent(jLabel7))
-                                .addGap(79, 79, 79)
-                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                                    .addComponent(tfProveedor)
-                                    .addComponent(tfProducto)
-                                    .addComponent(spinnerCantidad, javax.swing.GroupLayout.PREFERRED_SIZE, 106, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                    .addGroup(layout.createSequentialGroup()
-                                        .addGap(4, 4, 4)
-                                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                            .addGroup(layout.createSequentialGroup()
-                                                .addComponent(jLabel11)
-                                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                                .addComponent(tfPrecioCosto, javax.swing.GroupLayout.DEFAULT_SIZE, 130, Short.MAX_VALUE))
-                                            .addComponent(tfFecha, javax.swing.GroupLayout.PREFERRED_SIZE, 102, javax.swing.GroupLayout.PREFERRED_SIZE)))))
                             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
                                 .addComponent(btnLimpiar)
                                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                                 .addComponent(btnGuardar)
                                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                                 .addComponent(btnSalir, javax.swing.GroupLayout.PREFERRED_SIZE, 81, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addGap(15, 15, 15))))
+                                .addGap(15, 15, 15))
+                            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
+                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                                    .addGroup(layout.createSequentialGroup()
+                                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                            .addComponent(jLabel6)
+                                            .addComponent(jLabel8)
+                                            .addComponent(jLabel7))
+                                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
+                                                .addComponent(jLabel11)
+                                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                                .addComponent(tfPrecioCosto, javax.swing.GroupLayout.PREFERRED_SIZE, 88, javax.swing.GroupLayout.PREFERRED_SIZE))
+                                            .addComponent(spinnerCantidad, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, 106, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                            .addComponent(tfFecha, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, 102, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                                    .addGroup(layout.createSequentialGroup()
+                                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                            .addComponent(jLabel4)
+                                            .addComponent(jLabel5))
+                                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                            .addComponent(tfProveedor)
+                                            .addComponent(tfProducto))))
+                                .addGap(20, 20, 20))))
                     .addGroup(layout.createSequentialGroup()
-                        .addContainerGap()
-                        .addComponent(jPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                    .addGroup(layout.createSequentialGroup()
-                        .addGap(39, 39, 39)
-                        .addComponent(jLabel12)))
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addGroup(layout.createSequentialGroup()
+                                .addGap(39, 39, 39)
+                                .addComponent(jLabel12))
+                            .addGroup(layout.createSequentialGroup()
+                                .addContainerGap()
+                                .addComponent(jPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                        .addGap(0, 3, Short.MAX_VALUE)))
+                .addGap(0, 10, Short.MAX_VALUE)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                        .addGap(0, 48, Short.MAX_VALUE)
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addGroup(layout.createSequentialGroup()
                                 .addComponent(jLabel2)
-                                .addGap(114, 114, 114)
-                                .addComponent(jLabel9)
+                                .addGap(111, 111, 111)
+                                .addComponent(jLabel9, javax.swing.GroupLayout.PREFERRED_SIZE, 128, javax.swing.GroupLayout.PREFERRED_SIZE)
                                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                                 .addComponent(tfFiltroProveedores, javax.swing.GroupLayout.PREFERRED_SIZE, 152, javax.swing.GroupLayout.PREFERRED_SIZE))
                             .addGroup(layout.createSequentialGroup()
@@ -318,11 +329,9 @@ public class ComprasVista extends javax.swing.JInternalFrame {
                                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                                 .addComponent(tfFiltroProductos, javax.swing.GroupLayout.PREFERRED_SIZE, 155, javax.swing.GroupLayout.PREFERRED_SIZE)))
                         .addGap(12, 12, 12))
-                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                            .addComponent(jScrollPane2, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, 674, Short.MAX_VALUE)
-                            .addComponent(jScrollPane1, javax.swing.GroupLayout.Alignment.TRAILING))))
+                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                        .addComponent(jScrollPane2, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, 674, Short.MAX_VALUE)
+                        .addComponent(jScrollPane1, javax.swing.GroupLayout.Alignment.TRAILING)))
                 .addContainerGap())
         );
         layout.setVerticalGroup(
@@ -409,7 +418,7 @@ public class ComprasVista extends javax.swing.JInternalFrame {
             int cantidad = Integer.parseInt(spinnerCantidad.getValue()+"");
             BigDecimal precioCosto = new BigDecimal(tfPrecioCosto.getText());
             //Armamos el detalleCompra y ejecutamos
-            dcd.nuevoDetalleDeCompra(new DetalleCompra(cantidad, precioCosto, compra, producto));
+            dcd.nuevoDetalleDeCompra(new DetalleCompra(cantidad, precioCosto.setScale(2, RoundingMode.HALF_UP), compra, producto));
             producto.setStock(producto.getStock()+cantidad);
             producto.setPrecioActual(precioCosto);
             produs.modificarProducto(producto);
@@ -430,9 +439,12 @@ public class ComprasVista extends javax.swing.JInternalFrame {
     }//GEN-LAST:event_tfFiltroProductosKeyReleased
 
     private void tableProveedoresMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_tableProveedoresMouseClicked
-        tfFecha.setText(LocalDate.now()+"");
-        tfProveedor.setText(tableProvs.getValueAt(tableProveedores.getSelectedRow(), 1)+"");
-        
+        if(tableProveedores.getSelectedRow() > -1){
+            tfProveedor.setText(tableProvs.getValueAt(tableProveedores.getSelectedRow(), 1)+"");            
+            if(tableProductos.getSelectedRow() > -1){
+                spinnerCantidad.setEnabled(true);
+            }
+        }
     }//GEN-LAST:event_tableProveedoresMouseClicked
 
     private void tfPrecioCostoKeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_tfPrecioCostoKeyTyped
@@ -449,7 +461,12 @@ public class ComprasVista extends javax.swing.JInternalFrame {
     }//GEN-LAST:event_tfPrecioCostoKeyTyped
 
     private void tableProductosMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_tableProductosMouseClicked
-        tfProducto.setText(tableProdus.getValueAt(tableProductos.getSelectedRow(), 1)+"");
+        if(tableProductos.getSelectedRow() > -1){
+            tfProducto.setText(tableProdus.getValueAt(tableProductos.getSelectedRow(), 1)+"");
+            if(tableProveedores.getSelectedRow() > -1){
+                spinnerCantidad.setEnabled(true);
+            }
+        }
     }//GEN-LAST:event_tableProductosMouseClicked
 
 
@@ -509,19 +526,28 @@ public class ComprasVista extends javax.swing.JInternalFrame {
         tfProveedor.setText("");
         tfProducto.setText("");
         spinnerCantidad.setValue(0);
+        spinnerCantidad.setEnabled(false);
         tfPrecioCosto.setText("");
-        tfFecha.setText("");
         tfFiltroProveedores.setText("");
         tfFiltroProductos.setText("");
         tableProveedores.clearSelection();
         tableProductos.clearSelection();
+        llenarTablaProductos(produs.listarProductos());
+        llenarTablaProveedores(provs.listarProveedores());
     }
 
     private boolean verificarCampos() {
         String prov = tfProveedor.getText();
         String prod = tfProducto.getText();
         int cantidad = Integer.parseInt(spinnerCantidad.getValue()+"");
-        return (!prov.isEmpty()) && (!prod.isEmpty()) && (cantidad>0);
+        String precio = tfPrecioCosto.getText();
+        try{
+            BigDecimal bigDecimal = new BigDecimal(precio);
+        }catch(NumberFormatException ex){
+            JOptionPane.showMessageDialog(this,"Ingrese un precio válido...");
+            return false;
+        }
+        return (!prov.isEmpty()) && (!prod.isEmpty()) && (cantidad>0) && (!precio.isEmpty());
     }
 
 }

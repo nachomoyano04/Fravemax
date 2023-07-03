@@ -296,6 +296,7 @@ public class ClientesVista extends javax.swing.JInternalFrame {
         labelSeleccioneFila.setVisible(false);
         labelCliente.setText("Nuevo Cliente");
         estado = "nuevo";
+        tfApellido.requestFocus();
     }//GEN-LAST:event_btnLimpiarActionPerformed
 
     private void btnModificarClienteActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnModificarClienteActionPerformed
@@ -322,6 +323,7 @@ public class ClientesVista extends javax.swing.JInternalFrame {
                 cd.nuevoCliente(cliente);
                 llenarTablaClientes();
                 limpiar();
+                tfApellido.requestFocus();
             }else if(estado.equalsIgnoreCase("modificacion")){
                 cliente.setIdCliente(Integer.parseInt(table.getValueAt(tableClientes.getSelectedRow(), 0)+""));
                 cd.modificarCliente(cliente);
@@ -331,11 +333,13 @@ public class ClientesVista extends javax.swing.JInternalFrame {
                 estado = "nuevo";
                 labelSeleccioneFila.setVisible(false);
                 labelCliente.setText("Nuevo Cliente");
+                tfApellido.requestFocus();
             }else{
                 JOptionPane.showMessageDialog(this, "algo raaaaro it's happen's");
             }
         }else{
             JOptionPane.showMessageDialog(this, "Hay campos sin rellenar");
+            tfApellido.requestFocus();
         }
     }//GEN-LAST:event_btnGuardarActionPerformed
 
@@ -350,6 +354,7 @@ public class ClientesVista extends javax.swing.JInternalFrame {
             tfNombre.setText(table.getValueAt(fila, 2)+"");
             tfDomicilio.setText(table.getValueAt(fila, 3)+"");
             tfTelefono.setText(table.getValueAt(fila, 4)+"");
+            tfApellido.requestFocus();
         }
     }//GEN-LAST:event_tableClientesMouseClicked
 

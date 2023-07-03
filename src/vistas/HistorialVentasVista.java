@@ -170,11 +170,13 @@ public class HistorialVentasVista extends javax.swing.JInternalFrame {
     }// </editor-fold>//GEN-END:initComponents
 
     private void tfFiltroPorProductoKeyReleased(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_tfFiltroPorProductoKeyReleased
+        tfFiltroPorCliente.setText("");
         String descripcion = tfFiltroPorProducto.getText();
         llenarTablaVentas(dvd.filtrarPorProductos(descripcion));
     }//GEN-LAST:event_tfFiltroPorProductoKeyReleased
 
     private void tfFiltroPorClienteKeyReleased(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_tfFiltroPorClienteKeyReleased
+        tfFiltroPorProducto.setText("");
         String apellido = tfFiltroPorCliente.getText();
         llenarTablaVentas(dvd.filtrarPorClientes(apellido));
     }//GEN-LAST:event_tfFiltroPorClienteKeyReleased

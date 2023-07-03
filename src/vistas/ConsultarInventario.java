@@ -40,13 +40,14 @@ public class ConsultarInventario extends javax.swing.JInternalFrame {
         jScrollPane1 = new javax.swing.JScrollPane();
         tableInventario = new javax.swing.JTable();
         btnSalir = new javax.swing.JButton();
-        jLabel2 = new javax.swing.JLabel();
         jLabel3 = new javax.swing.JLabel();
         tfFiltroPorDescripcion = new javax.swing.JTextField();
         jLabel4 = new javax.swing.JLabel();
         jcboxFiltroPorStock = new javax.swing.JComboBox<>();
         btnTodos = new javax.swing.JButton();
         jLabel5 = new javax.swing.JLabel();
+        jPanel2 = new javax.swing.JPanel();
+        jLabel2 = new javax.swing.JLabel();
 
         jPanel1.setBackground(new java.awt.Color(255, 255, 0));
 
@@ -115,10 +116,6 @@ public class ConsultarInventario extends javax.swing.JInternalFrame {
             }
         });
 
-        jLabel2.setFont(new java.awt.Font("Dialog", 1, 18)); // NOI18N
-        jLabel2.setForeground(new java.awt.Color(255, 255, 0));
-        jLabel2.setText("Filtros");
-
         jLabel3.setText("Por Descripcion:");
 
         tfFiltroPorDescripcion.addKeyListener(new java.awt.event.KeyAdapter() {
@@ -129,7 +126,7 @@ public class ConsultarInventario extends javax.swing.JInternalFrame {
 
         jLabel4.setText("Por Stock:");
 
-        jcboxFiltroPorStock.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "1 a 50", "51 a 100", "101 a 150", "151 a 200", "201 a 250", "+250" }));
+        jcboxFiltroPorStock.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Ninguno", "1 a 50", "51 a 100", "101 a 150", "151 a 200", "201 a 250", "+250" }));
         jcboxFiltroPorStock.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 jcboxFiltroPorStockActionPerformed(evt);
@@ -145,15 +142,33 @@ public class ConsultarInventario extends javax.swing.JInternalFrame {
 
         jLabel5.setText("Inventario completo: ");
 
+        jPanel2.setBackground(new java.awt.Color(0, 0, 0));
+
+        jLabel2.setFont(new java.awt.Font("Dialog", 1, 18)); // NOI18N
+        jLabel2.setForeground(new java.awt.Color(255, 255, 0));
+        jLabel2.setText("Filtros");
+
+        javax.swing.GroupLayout jPanel2Layout = new javax.swing.GroupLayout(jPanel2);
+        jPanel2.setLayout(jPanel2Layout);
+        jPanel2Layout.setHorizontalGroup(
+            jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(jPanel2Layout.createSequentialGroup()
+                .addGap(22, 22, 22)
+                .addComponent(jLabel2)
+                .addContainerGap(23, Short.MAX_VALUE))
+        );
+        jPanel2Layout.setVerticalGroup(
+            jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(jPanel2Layout.createSequentialGroup()
+                .addContainerGap()
+                .addComponent(jLabel2)
+                .addContainerGap(12, Short.MAX_VALUE))
+        );
+
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(layout.createSequentialGroup()
-                .addGap(50, 50, 50)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(jLabel5)
-                    .addComponent(jPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
             .addGroup(layout.createSequentialGroup()
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
                     .addGroup(layout.createSequentialGroup()
@@ -166,16 +181,12 @@ public class ConsultarInventario extends javax.swing.JInternalFrame {
                                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                                     .addGroup(layout.createSequentialGroup()
                                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                            .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                                .addComponent(tfFiltroPorDescripcion, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, 150, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                                .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                                                    .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                                        .addComponent(jLabel3)
-                                                        .addComponent(btnTodos, javax.swing.GroupLayout.PREFERRED_SIZE, 94, javax.swing.GroupLayout.PREFERRED_SIZE))
-                                                    .addGap(31, 31, 31)))
-                                            .addGroup(layout.createSequentialGroup()
-                                                .addGap(46, 46, 46)
-                                                .addComponent(jLabel2)))
+                                            .addComponent(tfFiltroPorDescripcion, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, 150, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
+                                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                                    .addComponent(jLabel3)
+                                                    .addComponent(btnTodos, javax.swing.GroupLayout.PREFERRED_SIZE, 94, javax.swing.GroupLayout.PREFERRED_SIZE))
+                                                .addGap(31, 31, 31)))
                                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
                                     .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
                                         .addGap(0, 0, Short.MAX_VALUE)
@@ -187,21 +198,29 @@ public class ConsultarInventario extends javax.swing.JInternalFrame {
                                 .addGap(52, 52, 52)))
                         .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 789, javax.swing.GroupLayout.PREFERRED_SIZE)))
                 .addContainerGap(25, Short.MAX_VALUE))
+            .addGroup(layout.createSequentialGroup()
+                .addGap(50, 50, 50)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(jLabel5)
+                    .addComponent(jPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(jPanel2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGap(0, 0, Short.MAX_VALUE))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
                 .addComponent(jPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, 38, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(36, 36, 36)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(layout.createSequentialGroup()
+                        .addGap(18, 18, 18)
                         .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 0, Short.MAX_VALUE)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                         .addComponent(btnSalir, javax.swing.GroupLayout.PREFERRED_SIZE, 38, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addGap(10, 10, 10))
                     .addGroup(layout.createSequentialGroup()
-                        .addComponent(jLabel2)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 41, Short.MAX_VALUE)
+                        .addGap(0, 31, Short.MAX_VALUE)
+                        .addComponent(jPanel2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(28, 28, 28)
                         .addComponent(jLabel5)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                         .addComponent(btnTodos)
@@ -220,27 +239,33 @@ public class ConsultarInventario extends javax.swing.JInternalFrame {
     }// </editor-fold>//GEN-END:initComponents
 
     private void btnTodosActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnTodosActionPerformed
+        tfFiltroPorDescripcion.setText("");
+        jcboxFiltroPorStock.setSelectedIndex(0);
         llenarTabla(pd.listarProductos());
     }//GEN-LAST:event_btnTodosActionPerformed
 
     private void tfFiltroPorDescripcionKeyReleased(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_tfFiltroPorDescripcionKeyReleased
+        jcboxFiltroPorStock.setSelectedIndex(0);
         String descripcion = tfFiltroPorDescripcion.getText();
         llenarTabla(pd.filtrarProductosPorDescripcion(descripcion));
     }//GEN-LAST:event_tfFiltroPorDescripcionKeyReleased
 
     private void jcboxFiltroPorStockActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jcboxFiltroPorStockActionPerformed
         int opcion = jcboxFiltroPorStock.getSelectedIndex();
-        ArrayList<Producto>productos;
+        ArrayList<Producto>productos = null;
         switch(opcion){
-            case 0: productos = pd.filtrarPorStock(1, 50);break;
-            case 1: productos = pd.filtrarPorStock(51, 100);break;
-            case 2: productos = pd.filtrarPorStock(101, 150);break;
-            case 3: productos = pd.filtrarPorStock(151, 200);break;
-            case 4: productos = pd.filtrarPorStock(201,250);break;
-            case 5: productos = pd.filtrarPorStock(250, Integer.MAX_VALUE);break;
-            default: productos = pd.listarProductos();
+            case 1: productos = pd.filtrarPorStock(1, 50);break;
+            case 2: productos = pd.filtrarPorStock(51, 100);break;
+            case 3: productos = pd.filtrarPorStock(101, 150);break;
+            case 4: productos = pd.filtrarPorStock(151, 200);break;
+            case 5: productos = pd.filtrarPorStock(201,250);break;
+            case 6: productos = pd.filtrarPorStock(250, Integer.MAX_VALUE);break;
+            default:break;
         }
-        llenarTabla(productos);
+        if(opcion != 0){
+            llenarTabla(productos);
+            tfFiltroPorDescripcion.setText("");
+        }
     }//GEN-LAST:event_jcboxFiltroPorStockActionPerformed
 
     private void btnSalirActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnSalirActionPerformed
@@ -257,6 +282,7 @@ public class ConsultarInventario extends javax.swing.JInternalFrame {
     private javax.swing.JLabel jLabel4;
     private javax.swing.JLabel jLabel5;
     private javax.swing.JPanel jPanel1;
+    private javax.swing.JPanel jPanel2;
     private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JComboBox<String> jcboxFiltroPorStock;
     private javax.swing.JTable tableInventario;

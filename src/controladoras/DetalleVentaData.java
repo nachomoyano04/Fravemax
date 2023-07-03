@@ -29,10 +29,7 @@ public class DetalleVentaData {
             ps.setBigDecimal(2, dv.getPrecioVenta());
             ps.setInt(3, dv.getVenta().getIdVenta());
             ps.setInt(4, dv.getProducto().getIdProducto());
-            int exito = ps.executeUpdate();
-            if(exito == 1){
-                JOptionPane.showMessageDialog(null,"Detalle de venta creado con éxito.");
-            }
+            ps.executeUpdate();
         }catch(SQLException ex){
             JOptionPane.showMessageDialog(null, "Error al agregar el detalle de venta..."+ex.getMessage());
         }

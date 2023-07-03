@@ -7,8 +7,8 @@ package vistas;
 
 import controladoras.ProductoData;
 import entidades.Producto;
+import java.awt.Color;
 import java.math.BigDecimal;
-import java.text.DecimalFormat;
 import java.util.ArrayList;
 import javax.swing.ButtonGroup;
 import javax.swing.JOptionPane;
@@ -30,6 +30,7 @@ public class NuevoProducto extends javax.swing.JInternalFrame {
         llenarTablaProductos();
         labelSeleccioneFila.setVisible(false);
         rbActivo.setSelected(true);
+        tfDescripcion.requestFocus();
     }
 
     /**
@@ -95,7 +96,7 @@ public class NuevoProducto extends javax.swing.JInternalFrame {
             }
         });
 
-        jLabel3.setText("Descripcion");
+        jLabel3.setText("Descripción:");
 
         jLabel4.setText("Precio");
 
@@ -193,8 +194,10 @@ public class NuevoProducto extends javax.swing.JInternalFrame {
 
         rbInactivo.setText("Inactivo");
 
-        labelSeleccioneFila.setForeground(new java.awt.Color(255, 0, 0));
-        labelSeleccioneFila.setText("Seleccione la fila del producto a modificar");
+        labelSeleccioneFila.setForeground(new java.awt.Color(255, 102, 102));
+        labelSeleccioneFila.setText("Doble click en la fila del producto a modificar...");
+        labelSeleccioneFila.setOpaque(true);
+        labelSeleccioneFila.setBackground(Color.BLACK);
 
         jLabel2.setFont(new java.awt.Font("Times New Roman", 1, 18)); // NOI18N
         jLabel2.setText("Lista de productos");
@@ -222,13 +225,11 @@ public class NuevoProducto extends javax.swing.JInternalFrame {
                                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                                     .addGroup(layout.createSequentialGroup()
                                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                            .addComponent(jLabel3)
                                             .addComponent(jLabel4)
                                             .addComponent(jLabel5))
-                                        .addGap(34, 34, 34)
-                                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                                            .addComponent(tfDescripcion, javax.swing.GroupLayout.DEFAULT_SIZE, 98, Short.MAX_VALUE)
-                                            .addComponent(tfStock)
+                                        .addGap(65, 65, 65)
+                                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                            .addComponent(tfStock, javax.swing.GroupLayout.PREFERRED_SIZE, 98, javax.swing.GroupLayout.PREFERRED_SIZE)
                                             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
                                                 .addComponent(jLabel7)
                                                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
@@ -237,7 +238,9 @@ public class NuevoProducto extends javax.swing.JInternalFrame {
                                         .addGap(23, 23, 23)
                                         .addComponent(btnLimpiar)
                                         .addGap(18, 18, 18)
-                                        .addComponent(btnGuardar, javax.swing.GroupLayout.PREFERRED_SIZE, 84, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                                        .addComponent(btnGuardar, javax.swing.GroupLayout.PREFERRED_SIZE, 84, javax.swing.GroupLayout.PREFERRED_SIZE))
+                                    .addComponent(tfDescripcion, javax.swing.GroupLayout.PREFERRED_SIZE, 200, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                    .addComponent(jLabel3))
                                 .addGap(0, 34, Short.MAX_VALUE))))
                     .addGroup(layout.createSequentialGroup()
                         .addGap(63, 63, 63)
@@ -251,7 +254,7 @@ public class NuevoProducto extends javax.swing.JInternalFrame {
                     .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                         .addGroup(layout.createSequentialGroup()
                             .addComponent(labelSeleccioneFila)
-                            .addGap(144, 144, 144)
+                            .addGap(125, 125, 125)
                             .addComponent(jLabel2))
                         .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 631, javax.swing.GroupLayout.PREFERRED_SIZE)))
                 .addGap(46, 46, 46))
@@ -262,18 +265,17 @@ public class NuevoProducto extends javax.swing.JInternalFrame {
                 .addContainerGap()
                 .addComponent(jPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                        .addComponent(labelSeleccioneFila)
-                        .addComponent(labelTitle))
-                    .addComponent(jLabel2, javax.swing.GroupLayout.Alignment.TRAILING))
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(labelSeleccioneFila)
+                    .addComponent(labelTitle)
+                    .addComponent(jLabel2))
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(layout.createSequentialGroup()
-                        .addGap(33, 33, 33)
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                            .addComponent(tfDescripcion, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(jLabel3))
-                        .addGap(34, 34, 34)
+                        .addGap(27, 27, 27)
+                        .addComponent(jLabel3)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addComponent(tfDescripcion, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(18, 18, 18)
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                             .addComponent(jLabel4)
                             .addComponent(tfPrecio, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
@@ -307,6 +309,7 @@ public class NuevoProducto extends javax.swing.JInternalFrame {
     private void btnLimpiarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnLimpiarActionPerformed
         limpiar();
         labelSeleccioneFila.setVisible(false);
+        tfDescripcion.requestFocus();
     }//GEN-LAST:event_btnLimpiarActionPerformed
 
     private void btnGuardarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnGuardarActionPerformed
@@ -326,12 +329,17 @@ public class NuevoProducto extends javax.swing.JInternalFrame {
                 limpiar();
             }else{
                 pr.setIdProducto(Integer.parseInt(table.getValueAt(tableProductos.getSelectedRow(), 0)+""));
-                pd.modificarProducto(pr);
+                boolean exito = pd.modificarProducto(pr);
+                if(exito){
+                    JOptionPane.showMessageDialog(this, "Producto modificado con éxito");
+                }
                 llenarTablaProductos();
                 limpiar();
             }
+            tfDescripcion.requestFocus();
         }else{
             JOptionPane.showMessageDialog(null, "Hay campos sin rellenar");
+            tfDescripcion.requestFocus();            
         }
     }//GEN-LAST:event_btnGuardarActionPerformed
 
@@ -375,6 +383,7 @@ public class NuevoProducto extends javax.swing.JInternalFrame {
             }else{
                 rbInactivo.setSelected(false);
             }
+            tfDescripcion.requestFocus();
         }
     }//GEN-LAST:event_tableProductosMouseClicked
 

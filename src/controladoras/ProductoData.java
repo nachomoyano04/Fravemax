@@ -37,9 +37,10 @@ public class ProductoData {
         }
     }
     
-    public void modificarProducto(Producto producto){
+    public boolean modificarProducto(Producto producto){
         String sql = "UPDATE producto SET descripcion = ?, precioActual = ?, stock = ?, estado = ? WHERE idProducto = ?";
         PreparedStatement ps;
+        boolean var = false;
         try{
             ps = con.prepareStatement(sql);
             ps.setString(1, producto.getDescripcion());
@@ -49,12 +50,13 @@ public class ProductoData {
             ps.setInt(5, producto.getIdProducto());
             int estado = ps.executeUpdate();
             if(estado == 1){
-                JOptionPane.showMessageDialog(null, "Producto modificado con éxito");
+                var = true;
             }
             ps.close();
         }catch(SQLException ex){
             JOptionPane.showMessageDialog(null, "Error al modificar producto..."+ex.getMessage());
         }
+        return var;
     }
     
     public void darDeBajaProducto(int idProducto){
